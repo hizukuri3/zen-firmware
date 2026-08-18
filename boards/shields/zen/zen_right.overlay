@@ -2,6 +2,12 @@
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 
+/* Do not raise the pointer layer right after a keystroke. Without this, brushing
+ * the trackball while typing turns J/K/L into mouse buttons on layer 1. */
+&zip_temp_layer {
+    require-prior-idle-ms = <150>;
+};
+
 &pointing_listener {
     input-processors =
         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
