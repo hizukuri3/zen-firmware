@@ -6,9 +6,9 @@
 
 / {
     behaviors {
-        // Tap for J, hold to reach the scroll layer while the thumb stays on the
+        // Tap for K, hold to reach the scroll layer while the thumb stays on the
         // ball. require-prior-idle-ms keeps the hold from firing mid-word.
-        scroll_j: scroll_j {
+        scroll_k: scroll_k {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
@@ -78,7 +78,7 @@
         layer_0 {
             bindings = <
 &kp ESCAPE &kp Q       &kp W             &kp E     &kp R             &kp T  &kp Y         &kp U      &kp I  &kp O           &kp P           &kp BSPC
-&mo 5      &kp A       &kp S             &kp D     &kp F             &kp G  &kp H         &scroll_j 4 J  &kp K      &kp L           &kp MINUS       &kp SEMI
+&mo 5      &kp A       &kp S             &kp D     &kp F             &kp G  &kp H         &kp J      &scroll_k 4 K  &kp L           &kp MINUS       &kp SEMI
 &mo 3      &kp Z       &kp X             &kp C     &kp V             &kp B  &kp TAB       &kp LG(LS(N4))  &kp N  &kp M           &kp COMMA       &kp DOT          &kp SLASH     &kp ENTER
 &mo 2      &kp GRAVE   &kp LEFT_CONTROL  &kp LALT  &kp LSHFT         &kp LEFT_GUI  &mo 2  &nav_space 7 SPACE  &kp RGUI  &kp SQT         &kp EQUAL       &mo 3
             >;
@@ -87,7 +87,7 @@
         layer_1 {
             bindings = <
 &trans  &trans     &trans  &trans  &trans      &trans      &trans  &trans  &trans           &trans  &trans  &trans
-&trans  &trans     &trans  &trans  &trans      &trans      &trans  &scroll_j 6 J  &trans  &trans  &trans  &trans
+&trans  &trans     &trans  &trans  &trans      &trans      &trans  &trans  &scroll_k 6 K  &trans  &trans  &trans
 &trans  &trans     &trans  &trans  &trans      &trans      &trans  &kp LG(LS(S))  &trans           &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &kp LGUI   &trans  &trans      &kp LCTRL   &trans  &trans  &kp RCTRL        &trans  &trans  &trans
             >;
@@ -104,16 +104,16 @@
 
         layer_3 {
             bindings = <
-&out OUT_USB  &kp F1        &kp F2        &kp F3        &kp F4        &kp F5        &trans          &kp N7  &kp N8  &kp N9   &kp ASTRK  &trans
-&out OUT_BLE  &kp F6        &kp F7        &kp F8        &kp F9        &kp F10       &trans          &kp N4  &kp N5  &kp N6   &kp MINUS  &kp PLUS
-&trans        &kp F11       &kp F12       &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR_ALL  &trans  &trans  &kp N1   &kp N2     &kp N3     &kp SLASH  &trans
-&to_mac       &to_win       &trans        &trans        &trans        &trans        &trans          &trans  &kp N0  &kp DOT  &trans     &trans
+&trans  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5   &trans  &kp N7  &kp N8  &kp N9  &kp ASTRK  &trans
+&trans  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &trans  &kp N4  &kp N5  &kp N6  &kp MINUS  &kp PLUS
+&trans  &kp F11  &kp F12  &trans  &trans  &trans  &trans  &trans  &trans   &kp N1   &kp N2     &kp N3  &kp SLASH  &trans
+&trans  &trans   &trans   &trans  &trans  &trans  &trans  &trans  &kp N0   &kp DOT  &trans     &trans
             >;
         };
 
         layer_4 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LC(LEFT_ARROW)  &trans  &kp LC(RIGHT_ARROW)  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans              &kp LC(UP_ARROW)     &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans              &trans               &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans              &trans               &trans  &trans
@@ -122,16 +122,16 @@
 
         layer_5 {
             bindings = <
-&kp ESC  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F12
-&trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans
-&trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans   &trans  &trans
-&trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &to_mac       &to_win       &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &out OUT_USB  &out OUT_BLE  &trans        &trans        &trans        &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans        &bt BT_CLR_ALL  &trans      &trans        &trans        &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans        &trans        &trans        &trans        &trans
             >;
         };
 
         layer_6 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LG(LC(LEFT_ARROW))  &kp LG(LC(RIGHT_ARROW))  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LG(LC(LEFT_ARROW))  &trans  &kp LG(LC(RIGHT_ARROW))  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                  &kp LG(TAB)              &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                  &trans                   &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                  &trans                   &trans  &trans
