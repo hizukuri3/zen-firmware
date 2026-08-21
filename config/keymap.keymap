@@ -78,9 +78,9 @@
         layer_0 {
             bindings = <
 &kp ESCAPE &kp Q       &kp W             &kp E     &kp R             &kp T  &kp Y         &kp U      &kp I  &kp O           &kp P           &kp BSPC
-&mo 5      &kp A       &kp S             &kp D     &kp F             &kp G  &kp H         &scroll_j 4 J  &kp K      &kp L           &kp MINUS       &kp ENTER
-&kp LSHFT  &kp Z       &kp X             &kp C     &kp V             &kp B  &kp TAB       &kp SPACE  &kp N  &kp M           &kp COMMA       &kp DOT          &kp UP_ARROW  &mt RSHFT QUESTION
-&mo 2      &kp ESCAPE  &kp LEFT_CONTROL  &kp LALT  &kp LSHFT         &kp LEFT_GUI  &mo 2  &nav_space 7 SPACE  &mo 3  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
+&mo 5      &kp A       &kp S             &kp D     &kp F             &kp G  &kp H         &scroll_j 4 J  &kp K      &kp L           &kp MINUS       &kp SEMI
+&kp LSHFT  &kp Z       &kp X             &kp C     &kp V             &kp B  &kp TAB       &kp SPACE  &kp N  &kp M           &kp COMMA       &kp DOT          &kp SLASH     &mt RSHFT ENTER
+&mo 2      &kp ESCAPE  &kp LEFT_CONTROL  &kp LALT  &kp LSHFT         &kp LEFT_GUI  &mo 2  &nav_space 7 SPACE  &mo 3  &kp SQT         &kp BSLH        &kp RGUI
             >;
         };
 
@@ -89,7 +89,7 @@
 &trans  &trans     &trans  &trans  &trans      &trans      &trans  &trans  &trans           &trans  &trans  &trans
 &trans  &trans     &trans  &trans  &trans      &trans      &trans  &scroll_j 6 J  &trans  &trans  &trans  &trans
 &trans  &trans     &trans  &trans  &trans      &trans      &trans  &trans  &trans           &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp LGUI   &trans  &trans      &kp LCTRL   &trans  &trans  &trans           &trans  &trans  &trans
+&trans  &trans  &kp LGUI   &trans  &trans      &kp LCTRL   &trans  &trans  &trans           &trans  &trans  &kp RCTRL
             >;
         };
 
