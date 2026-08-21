@@ -140,10 +140,10 @@
 
         layer_7 {
             bindings = <
-&kp LEFT_BRACKET      &trans  &trans  &trans  &trans  &trans  &trans  &trans          &kp UP_ARROW    &trans           &kp RIGHT_BRACKET      &trans
-&kp LEFT_PARENTHESIS  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp RIGHT_PARENTHESIS  &trans
-&kp LEFT_BRACE        &trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans           &trans                 &trans  &kp RIGHT_BRACE  &trans
-&trans                &trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans           &trans                 &trans
+&trans  &trans  &trans  &trans  &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &trans          &kp UP_ARROW    &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &kp LEFT_BRACE        &trans                 &trans          &kp RIGHT_BRACE &trans           &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                &trans                 &trans          &trans          &trans           &trans  &trans
             >;
         };
     };
