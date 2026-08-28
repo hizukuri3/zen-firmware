@@ -196,3 +196,26 @@ config IQS7211E_SCROLLER_INERTIA_STOP_THRESHOLD_Q8
       Q8 means 256 equals 1 wheel unit per 10ms.
 
 endif
+
+menuconfig ZEN_PROFILE_LAYERS
+    bool "Follow the active Bluetooth profile with a base layer"
+    default y
+    depends on ZMK_BLE
+    depends on !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
+    help
+      Switch the base layer whenever the active Bluetooth profile changes, and
+      once at startup from the profile restored out of settings. ZMK does not
+      persist layer state, so without this the keyboard comes back on its
+      default layer after a deep sleep or a power cycle while staying connected
+      to whichever host the stored profile points at.
+
+if ZEN_PROFILE_LAYERS
+
+config ZEN_PROFILE_LAYERS_STARTUP_DELAY_MS
+    int "Delay before applying the stored profile's layer at startup (ms)"
+    default 1000
+    help
+      Wait this long after init before reading the active profile, so that the
+      settings subsystem has had a chance to restore it.
+
+endif
