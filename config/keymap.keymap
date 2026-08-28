@@ -249,9 +249,9 @@
         layer_0 {
             bindings = <
 &kp ESCAPE &kp Q       &kp W             &kp E     &kp R             &kp T  &kp Y         &kp U      &kp I  &kp O           &kp P           &kp BSPC
-&mo 5      &kp A       &kp S             &kp D     &kp F             &kp G  &kp H         &kp J      &scroll_k 4 K  &kp L           &kp MINUS       &kp SEMI
+&mo 2      &kp A       &kp S             &kp D     &kp F             &kp G  &kp H         &kp J      &scroll_k 4 K  &kp L           &kp MINUS       &kp SEMI
 &mo 3      &kp Z       &kp X             &kp C     &kp V             &kp B  &kp TAB       &kp LG(LS(N4))  &kp N  &kp M           &kp COMMA       &kp DOT          &kp SLASH     &kp ENTER
-&mo 2      &kp GRAVE   &kp LEFT_CONTROL  &kp LALT  &kp LSHFT         &kp LEFT_GUI  &mo 2  &mac_space  &kp RGUI  &kp SQT         &kp EQUAL       &mo 3
+&mo 5      &kp GRAVE   &kp LEFT_CONTROL  &kp LALT  &kp LSHFT         &kp LEFT_GUI  &mo 2  &mac_space  &kp RGUI  &kp SQT         &kp EQUAL       &mo 3
             >;
         };
 
@@ -262,9 +262,9 @@
         layer_1 {
             bindings = <
 &trans  &trans      &trans    &trans  &trans  &trans     &trans  &trans          &trans         &trans  &trans      &trans
-&trans  &trans      &trans    &trans  &trans  &trans     &trans  &trans          &scroll_k 6 K  &trans  &jis_minus  &jis_semi
+&mo 8   &trans      &trans    &trans  &trans  &trans     &trans  &trans          &scroll_k 6 K  &trans  &jis_minus  &jis_semi
 &trans  &trans      &trans    &trans  &trans  &trans     &trans  &kp LG(LS(S))   &trans         &trans  &trans      &trans  &trans  &trans
-&mo 8   &jis_grave  &kp LGUI  &trans  &trans  &kp LCTRL  &mo 8   &win_space      &kp RCTRL      &jis_sqt  &jis_equal  &trans
+&trans  &jis_grave  &kp LGUI  &trans  &trans  &kp LCTRL  &mo 8   &win_space      &kp RCTRL      &jis_sqt  &jis_equal  &trans
             >;
         };
 
@@ -298,12 +298,17 @@
             >;
         };
 
+        // Radio layer. Every key here sits at a position that layer 3 leaves
+        // alone, because mo 5 and mo 3 are one row apart on the same finger:
+        // overshoot the pinky while typing the number pad and this layer opens
+        // instead. Landing on nothing beats landing on a profile switch.
+        // Profiles run in order along the bottom row, starting next to mo 5.
         layer_5 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &to_mac       &to_win       &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &out OUT_USB  &out OUT_BLE  &trans        &trans        &trans        &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans        &bt BT_CLR_ALL  &trans      &trans        &trans        &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans        &trans        &trans        &trans        &trans
+&trans  &trans   &trans   &trans        &trans        &trans        &out OUT_USB    &trans  &trans  &trans  &trans  &trans
+&trans  &trans   &trans   &trans        &trans        &trans        &out OUT_BLE    &trans  &trans  &trans  &trans  &trans
+&trans  &trans   &trans   &trans        &trans        &trans        &trans          &bt BT_CLR_ALL  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &to_mac  &to_win  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans          &trans  &trans  &trans  &trans  &trans
             >;
         };
 
