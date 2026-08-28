@@ -331,7 +331,7 @@
         layer_7 {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &trans          &kp UP_ARROW    &trans           &trans  &trans
-&trans  &trans     &trans  &trans  &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LEFT_ARROW  &kp DOWN_ARROW   &kp RIGHT_ARROW    &kp UNDERSCORE  &kp COLON
+&trans  &kp EXCL   &kp AT  &kp HASH  &kp DOLLAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LEFT_ARROW  &kp DOWN_ARROW   &kp RIGHT_ARROW    &kp UNDERSCORE  &kp COLON
 &trans  &trans     &trans  &trans  &trans  &kp LEFT_BRACE        &trans                 &trans          &kp RIGHT_BRACE  &trans             &kp LESS_THAN   &kp GREATER_THAN  &kp QUESTION  &trans
 &trans  &kp TILDE  &trans  &trans  &trans  &trans                &trans                 &trans          &trans           &kp DOUBLE_QUOTES  &kp PLUS        &trans
             >;
@@ -351,7 +351,7 @@
         layer_9 {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &kp RBKT      &kp BSLH    &trans          &kp UP_ARROW    &trans           &trans  &trans
-&trans  &trans         &trans  &trans  &trans  &kp LS(N8)    &kp LS(N9)  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LS(INT1)   &jis_colon
+&trans  &kp LS(N1)     &jis_at  &kp LS(N3)  &kp LS(N4)  &kp LS(N8)    &kp LS(N9)  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LS(INT1)   &jis_colon
 &trans  &trans         &trans  &trans  &trans  &kp LS(RBKT)  &trans      &trans          &kp LS(BSLH)    &trans           &kp LS(COMMA)  &kp LS(DOT)   &kp LS(SLASH)  &trans
 &trans  &kp LS(EQUAL)  &trans  &trans  &trans  &trans        &trans      &trans          &trans          &kp LS(N2)       &kp LS(SEMI)   &trans
             >;
