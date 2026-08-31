@@ -213,6 +213,13 @@
     macros {
         // Pick the host and its modifier layout in one press. ZMK cannot detect
         // the OS, so the profile key carries the layer switch with it.
+        //
+        // src/profile_layers.c makes the same move on its own whenever the
+        // active profile changes, including after the deep sleep that resets
+        // the layer state, so the base layer can never drift away from the
+        // profile. The &to here is still worth keeping: selecting the profile
+        // that is already active raises no event, which makes these keys the
+        // way to force the two back into step by hand.
         to_mac: to_mac {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
