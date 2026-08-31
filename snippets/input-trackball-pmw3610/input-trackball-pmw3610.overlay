@@ -9,6 +9,17 @@
         codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
         track-remainders;
     };
+
+    /* The Windows scroll layer needs its own scaler node rather than a second
+     * set of arguments on the one above, because the remainder a scaler carries
+     * between events belongs to the divisor it was accumulated with. */
+    pmw3610_win_scroll_scaler: pmw3610_win_scroll_scaler {
+        compatible = "zmk,input-processor-scaler";
+        #input-processor-cells = <2>;
+        type = <INPUT_EV_REL>;
+        codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
+        track-remainders;
+    };
 };
 
 &spi0 {
@@ -37,12 +48,31 @@
     input-processors =
         <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>;
 
+    /* Layer 4 is the Mac scroll layer and layer 6 the Windows one, because the
+     * K hold on each base layer reaches its own copy. That split is what lets
+     * the two hosts scroll at different rates from one ball, which they have to:
+     * zen_right.conf turns on CONFIG_ZMK_POINTING_SMOOTH_SCROLLING, and the HID
+     * resolution multiplier it advertises is honoured by Windows and ignored by
+     * macOS. Windows therefore reads a wheel unit as a fraction of a detent
+     * where the Mac reads it as a whole one, and the divisor that feels right on
+     * the Mac leaves Windows barely moving. The Windows scaler is the Mac one
+     * multiplied back up by the multiplier the descriptor tops out at, sixteen:
+     * 1/40 * 16 = 2/5. */
     scroller {
-        layers = <4 6>;
+        layers = <4>;
         input-processors =
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
             <&zip_xy_to_scroll_mapper>,
             <&pmw3610_scroll_scaler 1 40>;
+        process-next;
+    };
+
+    win_scroller {
+        layers = <6>;
+        input-processors =
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
+            <&zip_xy_to_scroll_mapper>,
+            <&pmw3610_win_scroll_scaler 2 5>;
         process-next;
     };
 };
