@@ -261,6 +261,14 @@
         };
     };
 
+    /* A layer's number is its position in this node, and four other files name
+     * layers by that number. The scroll layers appear as `layers = <...>` in
+     * boards/shields/zen/zen_right.overlay and in the input-trackball-pmw3610,
+     * input-trackball-paw3222 and input-split-listener-left-all snippets, which
+     * is how the ball knows when to scroll; src/profile_layers.c maps profiles
+     * to base layers. Adding or removing a layer here shifts every number below
+     * it, and those files have to move with it. Nothing checks, and the build
+     * still passes - the ball just quietly stops scrolling. */
     keymap {
         compatible = "zmk,keymap";
 

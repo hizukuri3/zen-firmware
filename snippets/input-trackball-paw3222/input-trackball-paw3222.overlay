@@ -19,7 +19,7 @@
 
 &pointing_listener {
     scroller {
-        layers = <4>;
+        layers = <3>;
         input-processors =
             <&zip_xy_to_scroll_mapper>,
             <&scroll_scaler 1 28>;
