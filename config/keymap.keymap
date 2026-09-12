@@ -285,7 +285,7 @@
 &kp ESCAPE &kp Q       &kp W             &kp E     &kp R             &kp T  &kp Y         &kp U      &kp I  &kp O           &kp P           &kp BSPC
 &mo 2      &kp A       &kp S             &kp D     &kp F             &kp G  &kp H         &kp J      &scroll_k 4 K  &kp L           &kp MINUS       &kp SEMI
 &mo 3      &kp Z       &kp X             &kp C     &kp V             &kp B  &num_tab 3 TAB  &kp LG(LS(N4))  &kp N  &kp M           &kp COMMA       &kp DOT          &kp SLASH     &kp ENTER
-&mo 5      &kp GRAVE   &kp LEFT_CONTROL  &kp LALT  &kp LSHFT         &kp LEFT_GUI  &mo 2  &mac_space  &kp RGUI  &kp SQT         &kp EQUAL       &mo 3
+&mo 5      &kp GRAVE   &kp LEFT_CONTROL  &kp LALT  &kp LSHFT         &mo 10        &mo 2  &mac_space  &kp RGUI  &kp SQT         &kp EQUAL       &mo 3
             >;
         };
 
@@ -363,19 +363,26 @@
         // Arrows, symbols, and the low half of the digits, held with the right
         // thumb on space.
         //
-        // 1 to 5 sit on Q to T in printed order, held on the right and typed
-        // on the left, so neither hand has to hold and reach at once. Where
-        // 6 to 0 go is still open.
+        // The left hand reads down a US digit row: 1 to 5 on Q to T, and their
+        // shifted halves ! @ # $ % directly underneath. Held on the right and
+        // typed on the left, so neither hand has to hold and reach at once.
+        // 6 to 0 with ^ & * beneath them are the mirror of this on layer 10,
+        // held on the left and typed on the right.
         //
-        // Stopping at 5 is what keeps the right half of this layer intact. Ten
-        // digits would have run through the Y column, which is ], and the I
-        // column, which is up. Only [ gives way, on the T column, and layer 2
-        // still spells it out along with every other bracket pair.
+        // Below those the openers run { [ ( inward along C, V and B. Their
+        // closers sit at the mirrored positions on layer 10 - N, M and the
+        // comma - so a pair is always one hand each: ( from the left, ) from
+        // the right, and neither hand ever holds and reaches.
+        //
+        // Stopping the digits at 5 is what keeps the right half of this layer
+        // intact. Ten of them would have run through the Y column, which is ],
+        // and the I column, which is up. Only [ gave way on the T column, and
+        // it comes back on the V column below.
         layer_7 {
             bindings = <
 &trans  &kp N1     &kp N2  &kp N3    &kp N4      &kp N5                &kp RIGHT_BRACKET      &trans          &kp UP_ARROW     &trans             &trans          &trans
-&trans  &kp EXCL   &kp AT  &kp HASH  &kp DOLLAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LEFT_ARROW  &kp DOWN_ARROW   &kp RIGHT_ARROW    &kp UNDERSCORE  &kp COLON
-&trans  &trans     &trans  &trans  &trans  &kp LEFT_BRACE        &trans                 &trans          &kp RIGHT_BRACE  &trans             &kp LESS_THAN   &kp GREATER_THAN  &kp QUESTION  &trans
+&trans  &kp EXCL   &kp AT  &kp HASH  &kp DOLLAR  &kp PRCNT             &kp RIGHT_PARENTHESIS  &kp LEFT_ARROW  &kp DOWN_ARROW   &kp RIGHT_ARROW    &kp UNDERSCORE  &kp COLON
+&trans  &trans     &trans  &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS  &trans  &trans          &kp RIGHT_BRACE  &trans             &kp LESS_THAN   &kp GREATER_THAN  &kp QUESTION  &trans
 &trans  &kp TILDE  &trans  &trans  &trans  &trans                &trans                 &trans          &trans           &kp DOUBLE_QUOTES  &kp PLUS        &trans
             >;
         };
@@ -395,11 +402,48 @@
         layer_9 {
             bindings = <
 &trans  &kp N1         &kp N2   &kp N3      &kp N4      &kp N5        &kp BSLH    &trans          &kp UP_ARROW    &trans           &trans         &trans
-&trans  &kp LS(N1)     &jis_at  &kp LS(N3)  &kp LS(N4)  &kp LS(N8)    &kp LS(N9)  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LS(INT1)   &jis_colon
-&trans  &trans         &trans  &trans  &trans  &kp LS(RBKT)  &trans      &trans          &kp LS(BSLH)    &trans           &kp LS(COMMA)  &kp LS(DOT)   &kp LS(SLASH)  &trans
+&trans  &kp LS(N1)     &jis_at  &kp LS(N3)  &kp LS(N4)  &kp LS(N5)    &kp LS(N9)  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LS(INT1)   &jis_colon
+&trans  &trans         &trans  &kp LS(RBKT)  &kp RBKT  &kp LS(N8)  &trans      &trans          &kp LS(BSLH)    &trans           &kp LS(COMMA)  &kp LS(DOT)   &kp LS(SLASH)  &trans
 &trans  &kp LS(EQUAL)  &trans  &trans  &trans  &trans        &trans      &trans          &trans          &kp LS(N2)       &kp LS(SEMI)   &trans
             >;
         };
 
+        // The Cmd layer, held on the left thumb where LGUI used to sit.
+        //
+        // Two jobs in one hold. The right hand carries the half of the symbol
+        // layout the space layer does not: 6 to 0 on Y to P, ^ & * beneath
+        // them, and the closers ) ] } on N, M and the comma - each one at the
+        // mirror of its opener on layer 7, so a bracket pair is one hand each.
+        // Everything else on the board answers as LG(itself), so holding this
+        // key and typing C still sends Cmd+C and the thumb keeps the job it
+        // had.
+        //
+        // Six shortcuts gave up their keys to those symbols: Cmd with H, J, K,
+        // N, M and the comma. Cmd with 1 to 5 is not here either - the left
+        // hand's top row is Cmd+Q through Cmd+T and there is no room - but
+        // those are rare enough on this board to leave out.
+        //
+        // Space is the reason this shape is needed at all. Cmd+Space switches
+        // the input method, and it used to work because mac_space sees Cmd
+        // already down and sends a plain space instead of taking the hold.
+        // With LGUI gone from the thumb that no longer fires, so the space
+        // position spells the shortcut out: LG(SPACE), with no hold-tap in the
+        // way.
+        //
+        // Where the fall-through is deliberate: the modifiers stay live so
+        // Cmd+Shift+key still composes, the layer keys stay reachable, and
+        // RGUI on the bottom row is a real held Cmd for the three things a
+        // re-pressed one cannot do - cycling Cmd+Tab, Cmd+click, Cmd+drag.
+        //
+        // Mac only. The Windows profile keeps LCTRL on this key until we know
+        // what its input switch is.
+        layer_10 {
+            bindings = <
+&trans  &kp LG(Q)      &kp LG(W)  &kp LG(E)  &kp LG(R)  &kp LG(T)  &kp N6       &kp N7         &kp N8     &kp N9         &kp N0         &kp LG(BSPC)
+&trans  &kp LG(A)      &kp LG(S)  &kp LG(D)  &kp LG(F)  &kp LG(G)  &kp CARET    &kp AMPERSAND  &kp ASTRK  &kp LG(L)      &kp LG(MINUS)  &kp LG(SEMI)
+&trans  &kp LG(Z)      &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LG(B)  &kp LG(TAB)  &trans         &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &kp RIGHT_BRACE  &kp LG(DOT)  &kp LG(SLASH)  &kp LG(ENTER)
+&trans  &kp LG(GRAVE)  &trans     &trans     &trans     &trans     &trans       &kp LG(SPACE)  &trans     &kp LG(SQT)    &kp LG(EQUAL)  &trans
+            >;
+        };
     };
 };
