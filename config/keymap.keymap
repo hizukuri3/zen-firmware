@@ -285,7 +285,7 @@
 &kp ESCAPE &kp Q       &kp W             &kp E     &kp R             &kp T  &kp Y         &kp U      &kp I  &kp O           &kp P           &kp BSPC
 &mo 2      &kp A       &kp S             &kp D     &kp F             &kp G  &kp H         &kp J      &scroll_k 4 K  &kp L           &kp MINUS       &kp SEMI
 &mo 3      &kp Z       &kp X             &kp C     &kp V             &kp B  &num_tab 3 TAB  &kp LG(LS(N4))  &kp N  &kp M           &kp COMMA       &kp DOT          &kp SLASH     &kp ENTER
-&mo 5      &kp GRAVE   &kp LEFT_CONTROL  &kp LALT  &kp LSHFT         &kp LEFT_GUI  &mo 2  &mac_space  &kp RGUI  &kp SQT         &kp EQUAL       &mo 3
+&mo 5      &kp GRAVE   &kp LEFT_CONTROL  &kp LALT  &kp LSHFT         &mo 10        &kp LEFT_GUI  &mac_space  &kp RGUI  &kp SQT         &kp EQUAL       &mo 3
             >;
         };
 
@@ -298,7 +298,7 @@
 &trans  &trans      &trans    &trans  &trans  &trans     &trans  &trans          &trans         &trans  &trans      &trans
 &mo 8   &trans      &trans    &trans  &trans  &trans     &trans  &trans          &scroll_k 6 K  &trans  &jis_minus  &jis_semi
 &trans  &trans      &trans    &trans  &trans  &trans     &trans  &kp LG(LS(S))   &trans         &trans  &trans      &trans  &trans  &trans
-&trans  &jis_grave  &kp LGUI  &trans  &trans  &kp LCTRL  &mo 8   &win_space      &kp RCTRL      &jis_sqt  &jis_equal  &trans
+&trans  &jis_grave  &kp LGUI  &trans  &trans  &trans     &kp LCTRL  &win_space      &kp RCTRL      &jis_sqt  &jis_equal  &trans
             >;
         };
 
@@ -360,25 +360,23 @@
             >;
         };
 
-        // Arrow, symbol and number layer, held with the right thumb on space.
+        // Arrows, symbols, and the low half of the digits, held with the right
+        // thumb on space.
         //
-        // The digits run along the QWERTY top row in printed order, 1 on Q and
-        // 0 on P, so the thumb holds and the fingers stay home. That row used
-        // to end in [ and ] on the T and Y columns; both still live on layer 2,
-        // which is where every other bracket pair is spelled out too, so the
-        // only thing lost is a second way to reach them.
+        // 1 to 5 sit on Q to T in printed order. The holding thumb and the
+        // typing hand are opposite, so neither hand has to hold and reach at
+        // once; 6 to 0 are the mirror of this on layer 10, held with the left
+        // thumb and typed with the right hand.
         //
-        // The digits do cost the arrow cluster its old shape: up sat on the I
-        // column, which is now 8. So up moves down to the home row beside left
-        // and right, and down moves one row under it. Three of the four arrows
-        // are on the home row now instead of two, and up and down are still in
-        // one column. < shifts one key left onto the M column to make room; >
-        // keeps its own legend.
+        // Stopping at 5 is what keeps the right half of this layer intact. Ten
+        // digits would have run through the Y column, which is ], and the I
+        // column, which is up. Only [ gives way, on the T column, and layer 2
+        // still spells it out along with every other bracket pair.
         layer_7 {
             bindings = <
-&trans  &kp N1     &kp N2  &kp N3    &kp N4      &kp N5                &kp N6                 &kp N7          &kp N8           &kp N9             &kp N0          &trans
-&trans  &kp EXCL   &kp AT  &kp HASH  &kp DOLLAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LEFT_ARROW  &kp UP_ARROW     &kp RIGHT_ARROW    &kp UNDERSCORE  &kp COLON
-&trans  &trans     &trans  &trans  &trans  &kp LEFT_BRACE        &trans                 &trans          &kp RIGHT_BRACE  &kp LESS_THAN      &kp DOWN_ARROW  &kp GREATER_THAN  &kp QUESTION  &trans
+&trans  &kp N1     &kp N2  &kp N3    &kp N4      &kp N5                &kp RIGHT_BRACKET      &trans          &kp UP_ARROW     &trans             &trans          &trans
+&trans  &kp EXCL   &kp AT  &kp HASH  &kp DOLLAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LEFT_ARROW  &kp DOWN_ARROW   &kp RIGHT_ARROW    &kp UNDERSCORE  &kp COLON
+&trans  &trans     &trans  &trans  &trans  &kp LEFT_BRACE        &trans                 &trans          &kp RIGHT_BRACE  &trans             &kp LESS_THAN   &kp GREATER_THAN  &kp QUESTION  &trans
 &trans  &kp TILDE  &trans  &trans  &trans  &trans                &trans                 &trans          &trans           &kp DOUBLE_QUOTES  &kp PLUS        &trans
             >;
         };
@@ -393,16 +391,39 @@
             >;
         };
 
-        // JIS copy of layer 7. Arrows and the ten unshifted digit codes are
+        // JIS copy of layer 7. Arrows and the unshifted digit codes are
         // host-independent, so both carry over unchanged; the brackets are not.
         layer_9 {
             bindings = <
-&trans  &kp N1         &kp N2   &kp N3      &kp N4      &kp N5        &kp N6      &kp N7          &kp N8          &kp N9           &kp N0         &trans
-&trans  &kp LS(N1)     &jis_at  &kp LS(N3)  &kp LS(N4)  &kp LS(N8)    &kp LS(N9)  &kp LEFT_ARROW  &kp UP_ARROW    &kp RIGHT_ARROW  &kp LS(INT1)   &jis_colon
-&trans  &trans         &trans  &trans  &trans  &kp LS(RBKT)  &trans      &trans          &kp LS(BSLH)    &kp LS(COMMA)    &kp DOWN_ARROW  &kp LS(DOT)   &kp LS(SLASH)  &trans
+&trans  &kp N1         &kp N2   &kp N3      &kp N4      &kp N5        &kp BSLH    &trans          &kp UP_ARROW    &trans           &trans         &trans
+&trans  &kp LS(N1)     &jis_at  &kp LS(N3)  &kp LS(N4)  &kp LS(N8)    &kp LS(N9)  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LS(INT1)   &jis_colon
+&trans  &trans         &trans  &trans  &trans  &kp LS(RBKT)  &trans      &trans          &kp LS(BSLH)    &trans           &kp LS(COMMA)  &kp LS(DOT)   &kp LS(SLASH)  &trans
 &trans  &kp LS(EQUAL)  &trans  &trans  &trans  &trans        &trans      &trans          &trans          &kp LS(N2)       &kp LS(SEMI)   &trans
             >;
         };
 
+        // The high half of the digits, 6 to 0 on Y to P, held with the left
+        // thumb. It is the mirror of the 1 to 5 on layer 7: that one is held on
+        // the right and typed on the left, this one is held on the left and
+        // typed on the right, so a digit never asks one hand to hold a key and
+        // reach for another at the same time.
+        //
+        // This layer took the inner of the two left thumb keys, which is where
+        // the thumb already rests, and pushed LGUI (LCTRL on Windows) out to the
+        // key beside it. Aiming for the layer and landing on the modifier used
+        // to fire a stray shortcut; now that the two have traded places, the
+        // same slip opens a layer whose left half is transparent and types the
+        // plain letter instead.
+        //
+        // Shared by both profiles: the unshifted digit codes print the same
+        // character on a JIS host as on a US one, so there is no JIS copy.
+        layer_10 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
     };
 };
