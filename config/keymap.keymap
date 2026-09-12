@@ -285,7 +285,7 @@
 &kp ESCAPE &kp Q       &kp W             &kp E     &kp R             &kp T  &kp Y         &kp U      &kp I  &kp O           &kp P           &kp BSPC
 &mo 2      &kp A       &kp S             &kp D     &kp F             &kp G  &kp H         &kp J      &scroll_k 4 K  &kp L           &kp MINUS       &kp SEMI
 &mo 3      &kp Z       &kp X             &kp C     &kp V             &kp B  &num_tab 3 TAB  &kp LG(LS(N4))  &kp N  &kp M           &kp COMMA       &kp DOT          &kp SLASH     &kp ENTER
-&mo 5      &kp GRAVE   &kp LEFT_CONTROL  &kp LALT  &kp LSHFT         &mo 10        &kp LEFT_GUI  &mac_space  &kp RGUI  &kp SQT         &kp EQUAL       &mo 3
+&mo 5      &kp GRAVE   &kp LEFT_CONTROL  &kp LALT  &kp LSHFT         &kp LEFT_GUI  &mo 2  &mac_space  &kp RGUI  &kp SQT         &kp EQUAL       &mo 3
             >;
         };
 
@@ -298,7 +298,7 @@
 &trans  &trans      &trans    &trans  &trans  &trans     &trans  &trans          &trans         &trans  &trans      &trans
 &mo 8   &trans      &trans    &trans  &trans  &trans     &trans  &trans          &scroll_k 6 K  &trans  &jis_minus  &jis_semi
 &trans  &trans      &trans    &trans  &trans  &trans     &trans  &kp LG(LS(S))   &trans         &trans  &trans      &trans  &trans  &trans
-&trans  &jis_grave  &kp LGUI  &trans  &trans  &trans     &kp LCTRL  &win_space      &kp RCTRL      &jis_sqt  &jis_equal  &trans
+&trans  &jis_grave  &kp LGUI  &trans  &trans  &kp LCTRL  &mo 8   &win_space      &kp RCTRL      &jis_sqt  &jis_equal  &trans
             >;
         };
 
@@ -363,10 +363,9 @@
         // Arrows, symbols, and the low half of the digits, held with the right
         // thumb on space.
         //
-        // 1 to 5 sit on Q to T in printed order. The holding thumb and the
-        // typing hand are opposite, so neither hand has to hold and reach at
-        // once; 6 to 0 are the mirror of this on layer 10, held with the left
-        // thumb and typed with the right hand.
+        // 1 to 5 sit on Q to T in printed order, held on the right and typed
+        // on the left, so neither hand has to hold and reach at once. Where
+        // 6 to 0 go is still open.
         //
         // Stopping at 5 is what keeps the right half of this layer intact. Ten
         // digits would have run through the Y column, which is ], and the I
@@ -402,28 +401,5 @@
             >;
         };
 
-        // The high half of the digits, 6 to 0 on Y to P, held with the left
-        // thumb. It is the mirror of the 1 to 5 on layer 7: that one is held on
-        // the right and typed on the left, this one is held on the left and
-        // typed on the right, so a digit never asks one hand to hold a key and
-        // reach for another at the same time.
-        //
-        // This layer took the inner of the two left thumb keys, which is where
-        // the thumb already rests, and pushed LGUI (LCTRL on Windows) out to the
-        // key beside it. Aiming for the layer and landing on the modifier used
-        // to fire a stray shortcut; now that the two have traded places, the
-        // same slip opens a layer whose left half is transparent and types the
-        // plain letter instead.
-        //
-        // Shared by both profiles: the unshifted digit codes print the same
-        // character on a JIS host as on a US one, so there is no JIS copy.
-        layer_10 {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-        };
     };
 };
