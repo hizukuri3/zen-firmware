@@ -82,6 +82,21 @@
             bindings = <&mo>, <&kp>;
         };
 
+        // Tap for the screenshot shortcut, hold to reach the number row on the
+        // inner right key. The right thumb holds it and the left hand types the
+        // digits off the top row, so the fingers never leave home.
+        //
+        // The tap keycode differs per profile, so the binding carries it: the
+        // Mac base layer passes LG(LS(N4)), the Windows one LG(LS(S)).
+        num_shot: num_shot {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            bindings = <&mo>, <&kp>;
+        };
+
         // Space on the Mac profile. With Ctrl or Cmd already down the press is a
         // shortcut, never a layer hold, so skip the hold-tap and send the space
         // straight away. keep-mods leaves the modifier on the report so the host
@@ -284,7 +299,7 @@
             bindings = <
 &kp ESCAPE &kp Q       &kp W             &kp E     &kp R             &kp T  &kp Y         &kp U      &kp I  &kp O           &kp P           &kp BSPC
 &mo 2      &kp A       &kp S             &kp D     &kp F             &kp G  &kp H         &kp J      &scroll_k 4 K  &kp L           &kp MINUS       &kp SEMI
-&mo 3      &kp Z       &kp X             &kp C     &kp V             &kp B  &num_tab 3 TAB  &kp LG(LS(N4))  &kp N  &kp M           &kp COMMA       &kp DOT          &kp SLASH     &kp ENTER
+&mo 3      &kp Z       &kp X             &kp C     &kp V             &kp B  &num_tab 3 TAB  &num_shot 10 LG(LS(N4))  &kp N  &kp M           &kp COMMA       &kp DOT          &kp SLASH     &kp ENTER
 &mo 5      &kp GRAVE   &kp LEFT_CONTROL  &kp LALT  &kp LSHFT         &kp LEFT_GUI  &mo 2  &mac_space  &kp RGUI  &kp SQT         &kp EQUAL       &mo 3
             >;
         };
@@ -297,7 +312,7 @@
             bindings = <
 &trans  &trans      &trans    &trans  &trans  &trans     &trans  &trans          &trans         &trans  &trans      &trans
 &mo 8   &trans      &trans    &trans  &trans  &trans     &trans  &trans          &scroll_k 6 K  &trans  &jis_minus  &jis_semi
-&trans  &trans      &trans    &trans  &trans  &trans     &trans  &kp LG(LS(S))   &trans         &trans  &trans      &trans  &trans  &trans
+&trans  &trans      &trans    &trans  &trans  &trans     &trans  &num_shot 10 LG(LS(S))   &trans         &trans  &trans      &trans  &trans  &trans
 &trans  &jis_grave  &kp LGUI  &trans  &trans  &kp LCTRL  &mo 8   &win_space      &kp RCTRL      &jis_sqt  &jis_equal  &trans
             >;
         };
@@ -386,6 +401,26 @@
 &trans  &kp LS(N1)     &jis_at  &kp LS(N3)  &kp LS(N4)  &kp LS(N8)    &kp LS(N9)  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LS(INT1)   &jis_colon
 &trans  &trans         &trans  &trans  &trans  &kp LS(RBKT)  &trans      &trans          &kp LS(BSLH)    &trans           &kp LS(COMMA)  &kp LS(DOT)   &kp LS(SLASH)  &trans
 &trans  &kp LS(EQUAL)  &trans  &trans  &trans  &trans        &trans      &trans          &trans          &kp LS(N2)       &kp LS(SEMI)   &trans
+            >;
+        };
+
+        // Number row, held from the inner right key. The digits sit on the
+        // QWERTY top row in their printed order, so 1 is on Q and 0 is on P and
+        // there is nothing new to learn.
+        //
+        // Shared by both profiles: the ten unshifted digit codes print the same
+        // character on a JIS host as on a US one, so unlike the symbol layers
+        // this one needs no JIS copy.
+        //
+        // Everything else is transparent on purpose. Shift, the modifiers,
+        // backspace and enter all keep working from the base layer while the
+        // thumb holds, which is what typing a number in running text needs.
+        layer_10 {
+            bindings = <
+&trans  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
