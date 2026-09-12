@@ -291,20 +291,19 @@
         // copy of this layer.
         //
         // One way in, the left thumb, because that is the hand the number pad
-        // needs free of it: every digit is on the right. The F-keys are on the
-        // left and so share the holding hand, which is the one awkward corner
-        // of this layer, but they come up rarely enough to leave there.
+        // needs free of it: every digit is on the right.
         //
-        // The second way in used to be the right pinky, for exactly those
-        // F-keys. That key is a right Shift now. The board had two Shifts and
-        // both were on the left, so capitalising a left-hand letter asked one
-        // hand to hold and reach - the thing every other layer here is shaped
-        // to avoid - and that happens far more often than an F-key.
+        // Nothing but the pad is here any more. The F-keys used to sit on the
+        // left half of this layer, one key away from the Cmd layer's own thumb
+        // key, so aiming for Cmd and landing here turned the whole left-hand
+        // shortcut cluster into function keys - Cmd+F into F9, Cmd+S into F7,
+        // Cmd+Z into F11. They live on the radio layer now, and this layer's
+        // left half is transparent, so the same slip types the plain letter.
         layer_2 {
             bindings = <
-&trans  &kp F1   &kp F2   &kp F3  &kp F4  &kp F5   &trans  &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_MULTIPLY  &trans
-&trans  &kp F6   &kp F7   &kp F8  &kp F9  &kp F10  &trans  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_MINUS     &kp KP_PLUS
-&trans  &kp F11  &kp F12  &trans  &trans  &trans   &trans  &trans     &trans     &kp KP_N1  &kp KP_N2        &kp KP_N3  &kp KP_DIVIDE  &trans
+&trans  &trans   &trans   &trans  &trans  &trans   &trans  &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_MULTIPLY  &trans
+&trans  &trans   &trans   &trans  &trans  &trans   &trans  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_MINUS     &kp KP_PLUS
+&trans  &trans   &trans   &trans  &trans  &trans   &trans  &trans     &trans     &kp KP_N1  &kp KP_N2        &kp KP_N3  &kp KP_DIVIDE  &trans
 &trans  &trans   &trans   &trans  &trans  &trans   &trans  &trans     &kp KP_N0  &kp KP_DOT  &trans          &trans
             >;
         };
@@ -318,16 +317,22 @@
             >;
         };
 
-        // Radio layer, held on the bottom left. Every key here sits at a
-        // position the number pad leaves alone: the two are on the same pinky
-        // column, so overshooting one opens the other, and landing on nothing
-        // beats landing on a profile switch.
-        // Profiles run in order along the bottom row, starting next to the mo.
+        // Radio layer, held on the bottom left, and the F-keys ride along: both
+        // are things you reach for rarely and deliberately, and neither wants a
+        // key of its own on a board this size.
+        //
+        // F1 to F12 sit exactly where the digits do - F1 to F5 on Q to T like
+        // the space layer's 1 to 5, F6 to F10 on Y to P like the Cmd layer's 6
+        // to 0 - so the number you already know gives you the key. F11 carries
+        // on past F10 to the end of the row, and F12 sits under it.
+        //
+        // That top row is where OUT_USB was, so the two output keys step down a
+        // row and keep their column. Profiles run in order along the bottom row.
         layer_4 {
             bindings = <
-&trans  &trans   &trans   &trans        &trans        &trans        &out OUT_USB    &trans  &trans  &trans  &trans  &trans
-&trans  &trans   &trans   &trans        &trans        &trans        &out OUT_BLE    &trans  &trans  &trans  &trans  &trans
-&trans  &trans   &trans   &trans        &trans        &trans        &trans          &bt BT_CLR_ALL  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp F1   &kp F2   &kp F3        &kp F4        &kp F5        &kp F6          &kp F7  &kp F8  &kp F9  &kp F10 &kp F11
+&trans  &trans   &trans   &trans        &trans        &trans        &out OUT_USB    &trans  &trans  &trans  &trans  &kp F12
+&trans  &trans   &trans   &trans        &trans        &trans        &trans          &bt BT_CLR_ALL  &out OUT_BLE  &trans  &trans  &trans  &trans  &trans
 &trans  &to_mac  &to_win  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans          &trans  &trans  &trans  &trans  &trans
             >;
         };
