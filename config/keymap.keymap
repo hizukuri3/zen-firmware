@@ -65,6 +65,23 @@
             bindings = <&mo>, <&kp>;
         };
 
+        // Tap for tab, hold to reach the number pad on the inner left key. The
+        // pad sits entirely on the right hand, so the left hand only has to
+        // hold the layer: every digit is then typed with the right hand alone.
+        //
+        // Unlike the two hold-taps above this one has no require-prior-idle-ms.
+        // Digits follow letters constantly (foo123, utf8, sha256), and forcing
+        // a tap after recent typing would make the pad unreachable in exactly
+        // the words that need it.
+        num_tab: num_tab {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            bindings = <&mo>, <&kp>;
+        };
+
         // Space on the Mac profile. With Ctrl or Cmd already down the press is a
         // shortcut, never a layer hold, so skip the hold-tap and send the space
         // straight away. keep-mods leaves the modifier on the report so the host
@@ -242,17 +259,20 @@
             layers = <2 8>;
         };
 
+        // Layer 3 is left out of both click combos on purpose: positions 19-21
+        // carry the number pad's 4, 5 and 6 there, so "45" or "56" typed inside
+        // the combo window would send a click instead of the digits.
         left_click {
             bindings = <&mkp LCLK>;
             key-positions = <19 20>;
-            layers = <0 1 2 3 4 5 6 8>;
+            layers = <0 1 2 4 5 6 8>;
             require-prior-idle-ms = <100>;
         };
 
         right_click {
             bindings = <&mkp MB2>;
             key-positions = <20 21>;
-            layers = <0 1 2 3 4 5 6 8>;
+            layers = <0 1 2 4 5 6 8>;
             require-prior-idle-ms = <100>;
         };
     };
@@ -264,7 +284,7 @@
             bindings = <
 &kp ESCAPE &kp Q       &kp W             &kp E     &kp R             &kp T  &kp Y         &kp U      &kp I  &kp O           &kp P           &kp BSPC
 &mo 2      &kp A       &kp S             &kp D     &kp F             &kp G  &kp H         &kp J      &scroll_k 4 K  &kp L           &kp MINUS       &kp SEMI
-&mo 3      &kp Z       &kp X             &kp C     &kp V             &kp B  &kp TAB       &kp LG(LS(N4))  &kp N  &kp M           &kp COMMA       &kp DOT          &kp SLASH     &kp ENTER
+&mo 3      &kp Z       &kp X             &kp C     &kp V             &kp B  &num_tab 3 TAB  &kp LG(LS(N4))  &kp N  &kp M           &kp COMMA       &kp DOT          &kp SLASH     &kp ENTER
 &mo 5      &kp GRAVE   &kp LEFT_CONTROL  &kp LALT  &kp LSHFT         &kp LEFT_GUI  &mo 2  &mac_space  &kp RGUI  &kp SQT         &kp EQUAL       &mo 3
             >;
         };
@@ -294,6 +314,11 @@
         // Shared by both profiles. The number pad uses keypad codes, which carry
         // their own meaning regardless of the host layout, so there is no JIS
         // copy of this layer.
+        //
+        // Two ways in, one per hand, because the layer serves two halves. The
+        // number pad is all right-hand, so it is held from the left with
+        // num_tab on the inner key; the F-keys are all left-hand, so they are
+        // held from the right with the mo 3 at the end of the bottom row.
         layer_3 {
             bindings = <
 &trans  &kp F1   &kp F2   &kp F3  &kp F4  &kp F5   &trans  &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_MULTIPLY  &trans
