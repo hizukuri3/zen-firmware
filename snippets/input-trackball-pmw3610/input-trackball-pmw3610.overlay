@@ -48,7 +48,7 @@
     input-processors =
         <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>;
 
-    /* Layer 4 is the Mac scroll layer and layer 6 the Windows one, because the
+    /* Layer 3 is the Mac scroll layer and layer 5 the Windows one, because the
      * K hold on each base layer reaches its own copy. That split is what lets
      * the two hosts scroll at different rates from one ball, which they have to:
      * zen_right.conf turns on CONFIG_ZMK_POINTING_SMOOTH_SCROLLING, and the HID
@@ -59,7 +59,7 @@
      * multiplied back up by the multiplier the descriptor tops out at, sixteen:
      * 1/40 * 16 = 2/5. */
     scroller {
-        layers = <4>;
+        layers = <3>;
         input-processors =
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
             <&zip_xy_to_scroll_mapper>,
@@ -68,7 +68,7 @@
     };
 
     win_scroller {
-        layers = <6>;
+        layers = <5>;
         input-processors =
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
             <&zip_xy_to_scroll_mapper>,
