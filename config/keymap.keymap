@@ -372,56 +372,54 @@
             >;
         };
 
-        // The digits and symbols, held with the right thumb on space.
+        // Digits, arrows and symbols, held with the right thumb on space.
         //
-        // The top row is a US digit row, 1 to 0 on Q to P, with the shifted
-        // halves ! @ # $ % ^ & * underneath as far as the H row has room. All
-        // ten digits sit under one hold because numbers come in runs: splitting
-        // them across the two thumbs meant trading the hold back and forth in
-        // the middle of "2026", which was worse than typing 6 to 0 with the
-        // holding hand's fingers.
+        // The top row is a US digit row, 1 to 0 on Q to P, with ! @ # $ % ^
+        // underneath. All ten digits sit under one hold because numbers come in
+        // runs: splitting them across the two thumbs meant trading the hold
+        // back and forth in the middle of "2026". & and * gave their keys to
+        // the arrows and come from Shift with 7 and 8, as on any US keyboard.
+        //
+        // The arrows are one hand's job: left, down and right on J, K and L,
+        // and up on the comma beneath K. They are used with modifiers far more
+        // than anything else here - Shift to select, Cmd or Opt to jump - so the
+        // hold and the arrows share the right hand and leave the left free for
+        // those. The comma's < still comes from Shift and the comma.
         //
         // Below those the openers run { [ ( inward along C, V and B. Their
         // closers sit at the mirrored positions on layer 8 - N, M and the
         // comma - so a pair is one hand each. Symbols rarely come in runs, so
         // splitting them across the thumbs costs nothing.
-        //
-        // The arrows used to take the I, J, K and L keys here, which is what
-        // kept the digits at 5. They moved to the same keys on layer 8.
         layer_6 {
             bindings = <
 &trans  &kp N1     &kp N2  &kp N3    &kp N4      &kp N5                &kp N6                 &kp N7          &kp N8           &kp N9             &kp N0          &kp DELETE
-&trans  &kp EXCL   &kp AT  &kp HASH  &kp DOLLAR  &kp PRCNT             &kp CARET              &kp AMPERSAND   &kp ASTRK        &trans             &kp UNDERSCORE  &kp COLON
-&trans  &trans     &trans  &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS  &trans  &trans          &kp RIGHT_BRACE  &trans             &kp LESS_THAN   &kp GREATER_THAN  &kp QUESTION  &trans
+&trans  &kp EXCL   &kp AT  &kp HASH  &kp DOLLAR  &kp PRCNT             &kp CARET              &kp LEFT_ARROW  &kp DOWN_ARROW   &kp RIGHT_ARROW    &kp UNDERSCORE  &kp COLON
+&trans  &trans     &trans  &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS  &trans  &trans          &kp RIGHT_BRACE  &trans             &kp UP_ARROW    &kp GREATER_THAN  &kp QUESTION  &trans
 &trans  &kp TILDE  &trans  &trans  &trans  &trans                &trans                 &trans          &trans           &kp DOUBLE_QUOTES  &kp PLUS        &trans
             >;
         };
 
-        // JIS copy of layer 6. The unshifted digit codes are host-independent,
-        // so they carry over unchanged; ^ & * and the brackets are not.
+        // JIS copy of layer 6. The digits are the mod-morphs, so that Shift
+        // with them gives the US symbols the Mac layer gets for free; the
+        // arrows carry over unchanged, and the brackets are spelled the JIS way.
         layer_7 {
             bindings = <
-&trans  &kp N1         &kp N2   &kp N3      &kp N4      &kp N5        &kp N6      &kp N7          &kp N8          &kp N9           &kp N0         &kp DELETE
-&trans  &kp LS(N1)     &jis_at  &kp LS(N3)  &kp LS(N4)  &kp LS(N5)    &kp EQUAL   &kp LS(N6)      &kp LS(SQT)     &trans           &kp LS(INT1)   &jis_colon
-&trans  &trans         &trans  &kp LS(RBKT)  &kp RBKT  &kp LS(N8)  &trans      &trans          &kp LS(BSLH)    &trans           &kp LS(COMMA)  &kp LS(DOT)   &kp LS(SLASH)  &trans
+&trans  &kp N1         &jis_2   &kp N3      &kp N4      &kp N5        &jis_6      &jis_7          &jis_8          &jis_9           &jis_0         &kp DELETE
+&trans  &kp LS(N1)     &jis_at  &kp LS(N3)  &kp LS(N4)  &kp LS(N5)    &kp EQUAL   &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LS(INT1)   &jis_colon
+&trans  &trans         &trans  &kp LS(RBKT)  &kp RBKT  &kp LS(N8)  &trans      &trans          &kp LS(BSLH)    &trans           &kp UP_ARROW   &kp LS(DOT)   &kp LS(SLASH)  &trans
 &trans  &kp LS(EQUAL)  &trans  &trans  &trans  &trans        &trans      &trans          &trans          &kp LS(N2)       &kp LS(SEMI)   &trans
             >;
         };
 
         // The Cmd layer, held on the left thumb where LGUI used to sit.
         //
-        // Two jobs in one hold. The right hand carries the arrows - up on I above
-        // left, down and right on J, K and L - and the closers ) ] } on N, M
-        // and the comma - each one at the mirror of its opener on layer 6, so
+        // Two jobs in one hold. The right hand carries the closers ) ] } on N,
+        // M and the comma - each one at the mirror of its opener on layer 6, so
         // a bracket pair is one hand each. Everything else on the board answers
         // as LG(itself), so holding this key and typing C still sends Cmd+C and
         // the thumb keeps the job it had.
         //
-        // The arrows are plain arrows, held on the left and pressed on the
-        // right. Shift for a selection comes from the left pinky; Cmd+arrow
-        // needs the real RGUI.
-        //
-        // Seven shortcuts gave up their keys: Cmd with I, J, K, L, N, M and the
+        // Three shortcuts gave up their keys to those: Cmd with N, M and the
         // comma. Cmd with 1 to 5 is not here either - the left hand's top row
         // is Cmd+Q through Cmd+T and there is no room - but those are rare
         // enough on this board to leave out.
@@ -442,8 +440,8 @@
         // with LCTRL in place of LGUI and the symbols spelled the JIS way.
         layer_8 {
             bindings = <
-&trans  &kp LG(Q)      &kp LG(W)  &kp LG(E)  &kp LG(R)  &kp LG(T)  &kp LG(Y)    &kp LG(U)      &kp UP_ARROW  &kp LG(O)   &kp LG(P)      &kp LG(BSPC)
-&trans  &kp LG(A)      &kp LG(S)  &kp LG(D)  &kp LG(F)  &kp LG(G)  &kp LG(H)    &kp LEFT_ARROW &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LG(MINUS)  &kp LG(SEMI)
+&trans  &kp LG(Q)      &kp LG(W)  &kp LG(E)  &kp LG(R)  &kp LG(T)  &kp LG(Y)    &kp LG(U)      &kp LG(I)     &kp LG(O)   &kp LG(P)      &kp LG(BSPC)
+&trans  &kp LG(A)      &kp LG(S)  &kp LG(D)  &kp LG(F)  &kp LG(G)  &kp LG(H)    &kp LG(J)      &kp LG(K)       &kp LG(L)        &kp LG(MINUS)  &kp LG(SEMI)
 &trans  &kp LG(Z)      &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LG(B)  &kp LG(TAB)  &trans         &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &kp RIGHT_BRACE  &kp LG(DOT)  &kp LG(SLASH)  &kp LG(ENTER)
 &trans  &kp LG(GRAVE)  &trans     &trans     &trans     &trans     &trans       &kp LG(SPACE)  &trans     &kp LG(SQT)    &kp LG(EQUAL)  &trans
             >;
@@ -451,10 +449,10 @@
 
         // The Ctrl layer, the Windows twin of layer 8, held where LCTRL used to
         // sit on the left thumb. Same shape, same reason: the letters answer as
-        // LC(themselves) so Ctrl+C still works from that thumb, the right hand
-        // has the arrows, and Ctrl+Space keeps the input switch.
+        // LC(themselves) so Ctrl+C still works from that thumb, and Ctrl+Space
+        // keeps the input switch.
         //
-        // The arrows and the letters carry over from layer 8 unchanged, since
+        // The letters carry over from layer 8 unchanged, since
         // neither depends on the host layout. The symbols do not: ) ] } are
         // spelled the JIS way here, per the table at the top of this
         // file. The three Mac-only shortcuts drop out - Cmd+` cycles windows,
@@ -463,8 +461,8 @@
         // through rather than sending a modified one.
         layer_9 {
             bindings = <
-&trans  &kp LC(Q)  &kp LC(W)  &kp LC(E)  &kp LC(R)  &kp LC(T)  &kp LC(Y)    &kp LC(U)    &kp UP_ARROW &kp LC(O)     &kp LC(P)      &kp LC(BSPC)
-&trans  &kp LC(A)  &kp LC(S)  &kp LC(D)  &kp LC(F)  &kp LC(G)  &kp LC(H)    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LC(MINUS)  &kp LC(SEMI)
+&trans  &kp LC(Q)  &kp LC(W)  &kp LC(E)  &kp LC(R)  &kp LC(T)  &kp LC(Y)    &kp LC(U)    &kp LC(I)    &kp LC(O)     &kp LC(P)      &kp LC(BSPC)
+&trans  &kp LC(A)  &kp LC(S)  &kp LC(D)  &kp LC(F)  &kp LC(G)  &kp LC(H)    &kp LC(J)       &kp LC(K)       &kp LC(L)        &kp LC(MINUS)  &kp LC(SEMI)
 &trans  &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LC(B)  &kp LC(TAB)  &trans       &kp LS(N9)   &kp BSLH      &kp LS(BSLH)   &kp LC(DOT)  &kp LC(SLASH)  &kp LC(ENTER)
 &trans  &trans     &trans     &trans     &trans     &trans     &trans       &kp LC(SPACE)  &trans     &trans        &trans         &trans
             >;
