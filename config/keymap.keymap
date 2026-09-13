@@ -65,6 +65,24 @@
             bindings = <&mo>, <&kp>;
         };
 
+        // The left thumb Cmd/Ctrl key: hold for the Cmd or Ctrl layer, tap alone
+        // for the bare modifier. A plain &mo sends nothing when tapped, which
+        // kills every launcher bound to a double-tapped modifier even though
+        // Cmd+C and friends still work through the layer.
+        //
+        // hold-preferred because this is a modifier: any key pressed while it is
+        // down means a shortcut, however fast the roll. quick-tap-ms makes the
+        // second press of a double tap a tap straight away. No
+        // require-prior-idle-ms, since Cmd follows typing all the time.
+        thumb_mod: thumb_mod {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            bindings = <&mo>, <&kp>;
+        };
+
         // Space on the Mac profile. With Ctrl or Cmd already down the press is a
         // shortcut, never a layer hold, so skip the hold-tap and send the space
         // straight away. keep-mods leaves the modifier on the report so the host
@@ -277,7 +295,7 @@
 &kp ESCAPE &kp Q       &kp W             &kp E     &kp R             &kp T  &kp Y         &kp U      &kp I  &kp O           &kp P           &kp BSPC
 &kp TAB    &kp A       &kp S             &kp D     &kp F             &kp G  &kp H         &kp J      &scroll_k 3 K  &kp L           &kp MINUS       &kp SEMI
 &kp LSHFT  &kp Z       &kp X             &kp C     &kp V             &kp B  &kp BSLH      &kp LG(LS(N4))  &kp N  &kp M           &kp COMMA       &kp DOT          &kp SLASH     &kp ENTER
-&mo 4      &kp GRAVE   &kp LEFT_CONTROL  &kp LALT  &kp LSHFT         &mo 8  &mo 2         &mac_space  &kp RGUI  &kp SQT         &kp EQUAL       &kp RSHFT
+&mo 4      &kp GRAVE   &kp LEFT_CONTROL  &kp LALT  &kp LSHFT         &thumb_mod 8 LGUI  &mo 2         &mac_space  &kp RGUI  &kp SQT         &kp EQUAL       &kp RSHFT
             >;
         };
 
@@ -290,7 +308,7 @@
 &trans  &trans      &trans    &trans  &trans  &trans     &trans  &trans          &trans         &trans  &trans      &trans
 &trans  &trans      &trans    &trans  &trans  &trans     &trans  &trans          &scroll_k 5 K  &trans  &jis_minus  &jis_semi
 &trans  &trans      &trans    &trans  &trans  &trans     &jis_bslh  &kp LG(LS(S))   &trans         &trans  &trans      &trans  &trans  &trans
-&trans  &jis_grave  &kp LGUI  &trans  &trans  &mo 9      &trans  &win_space      &kp RCTRL      &jis_sqt  &jis_equal  &trans
+&trans  &jis_grave  &kp LGUI  &trans  &trans  &thumb_mod 9 LCTRL  &trans  &win_space      &kp RCTRL      &jis_sqt  &jis_equal  &trans
             >;
         };
 
