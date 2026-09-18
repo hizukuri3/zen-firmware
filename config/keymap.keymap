@@ -386,15 +386,16 @@
         // hold and the arrows share the right hand and leave the left free for
         // those. The comma's < still comes from Shift and the comma.
         //
-        // Below those the openers run { [ ( inward along C, V and B. Their
-        // closers sit at the mirrored positions on layer 8 - N, M and the
-        // comma - so a pair is one hand each. Symbols rarely come in runs, so
-        // splitting them across the thumbs costs nothing.
+        // Below those the openers run { [ ( inward along C, V and B, and ) and
+        // ] sit at their mirrors on N and M, so 「」 and () close under the
+        // same hold that opened them. } would mirror { on the comma, but the
+        // up arrow has that key; it comes from the Cmd hold, which carries all
+        // three closers at the same spots.
         layer_6 {
             bindings = <
 &trans  &kp N1     &kp N2  &kp N3    &kp N4      &kp N5                &kp N6                 &kp N7          &kp N8           &kp N9             &kp N0          &kp DELETE
 &trans  &kp EXCL   &kp AT  &kp HASH  &kp DOLLAR  &kp PRCNT             &kp CARET              &kp LEFT_ARROW  &kp DOWN_ARROW   &kp RIGHT_ARROW    &kp UNDERSCORE  &kp COLON
-&trans  &trans     &trans  &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS  &trans  &trans          &kp RIGHT_BRACE  &trans             &kp UP_ARROW    &kp GREATER_THAN  &kp QUESTION  &trans
+&trans  &trans     &trans  &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS  &trans  &trans          &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &kp UP_ARROW    &kp GREATER_THAN  &kp QUESTION  &trans
 &trans  &kp TILDE  &trans  &trans  &trans  &trans                &trans                 &trans          &trans           &kp DOUBLE_QUOTES  &kp PLUS        &trans
             >;
         };
@@ -406,7 +407,7 @@
             bindings = <
 &trans  &kp N1         &jis_2   &kp N3      &kp N4      &kp N5        &jis_6      &jis_7          &jis_8          &jis_9           &jis_0         &kp DELETE
 &trans  &kp LS(N1)     &jis_at  &kp LS(N3)  &kp LS(N4)  &kp LS(N5)    &kp EQUAL   &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LS(INT1)   &jis_colon
-&trans  &trans         &trans  &kp LS(RBKT)  &kp RBKT  &kp LS(N8)  &trans      &trans          &kp LS(BSLH)    &trans           &kp UP_ARROW   &kp LS(DOT)   &kp LS(SLASH)  &trans
+&trans  &trans         &trans  &kp LS(RBKT)  &kp RBKT  &kp LS(N8)  &trans      &trans          &kp LS(N9)      &kp BSLH         &kp UP_ARROW   &kp LS(DOT)   &kp LS(SLASH)  &trans
 &trans  &kp LS(EQUAL)  &trans  &trans  &trans  &trans        &trans      &trans          &trans          &kp LS(N2)       &kp LS(SEMI)   &trans
             >;
         };
