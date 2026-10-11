@@ -305,6 +305,35 @@
                 , <&macro_release &kp MACRO_PLACEHOLDER>
                 ;
         };
+
+        // A mouse button with the layer's own modifier held under it. The Cmd
+        // and Ctrl layers send LG(x) / LC(x) per key and never hold the
+        // modifier itself, so a plain &mkp from there would click bare. These
+        // press the modifier and the button together and let go of both when
+        // the combo does, so a held click still drags with the modifier down.
+        cmd_click: cmd_click {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings
+                = <&macro_param_1to1>
+                , <&macro_press &kp LGUI &mkp MACRO_PLACEHOLDER>
+                , <&macro_pause_for_release>
+                , <&macro_param_1to1>
+                , <&macro_release &mkp MACRO_PLACEHOLDER &kp LGUI>
+                ;
+        };
+
+        ctrl_click: ctrl_click {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings
+                = <&macro_param_1to1>
+                , <&macro_press &kp LCTRL &mkp MACRO_PLACEHOLDER>
+                , <&macro_pause_for_release>
+                , <&macro_param_1to1>
+                , <&macro_release &mkp MACRO_PLACEHOLDER &kp LCTRL>
+                ;
+        };
     };
 
     combos {
@@ -318,8 +347,7 @@
 
         // The number pad is left out of both click combos on purpose: positions
         // 19-21 carry its 4, 5 and 6, so "45" or "56" typed inside the combo
-        // window would send a click instead of the digits. The two Cmd layers
-        // are out for the same reason, where those positions spell & and *.
+        // window would send a click instead of the digits.
         left_click {
             bindings = <&mkp LCLK>;
             key-positions = <19 20>;
@@ -331,6 +359,38 @@
             bindings = <&mkp MB2>;
             key-positions = <20 21>;
             layers = <0 1 3 4 5>;
+            require-prior-idle-ms = <100>;
+        };
+
+        // The same two chords under the Cmd layer (8) and the Ctrl layer (9),
+        // where they click with the modifier held. The price is that Cmd+J, K
+        // and L pressed as a pair inside the combo window click instead; each
+        // is a single press away on its own.
+        cmd_left_click {
+            bindings = <&cmd_click LCLK>;
+            key-positions = <19 20>;
+            layers = <8>;
+            require-prior-idle-ms = <100>;
+        };
+
+        cmd_right_click {
+            bindings = <&cmd_click MB2>;
+            key-positions = <20 21>;
+            layers = <8>;
+            require-prior-idle-ms = <100>;
+        };
+
+        ctrl_left_click {
+            bindings = <&ctrl_click LCLK>;
+            key-positions = <19 20>;
+            layers = <9>;
+            require-prior-idle-ms = <100>;
+        };
+
+        ctrl_right_click {
+            bindings = <&ctrl_click MB2>;
+            key-positions = <20 21>;
+            layers = <9>;
             require-prior-idle-ms = <100>;
         };
     };
@@ -483,6 +543,11 @@
         // as LG(itself), so holding this key and typing C still sends Cmd+C and
         // the thumb keeps the job it had.
         //
+        // Cmd+Q is left out on purpose: Q sits at the corner of the thumb's
+        // reach and a rolled Cmd-then-Q quit the foreground app by accident.
+        // Q falls through to a plain q here; the deliberate Cmd+Q is RGUI on
+        // the right hand plus Q.
+        //
         // Three shortcuts gave up their keys to those: Cmd with N, M and the
         // comma. Cmd with 1 to 5 is not here either - the left hand's top row
         // is Cmd+Q through Cmd+T and there is no room - but those are rare
@@ -497,14 +562,17 @@
         //
         // Where the fall-through is deliberate: the modifiers stay live so
         // Cmd+Shift+key still composes, the layer keys stay reachable, and
-        // RGUI on the bottom row is a real held Cmd for the three things a
-        // re-pressed one cannot do - cycling Cmd+Tab, Cmd+click, Cmd+drag.
+        // RGUI on the bottom row is a real held Cmd for the things a
+        // re-pressed one cannot do - cycling Cmd+Tab and a long Cmd+drag.
+        //
+        // The click chords J+K and K+L are live here too, as Cmd+left click and
+        // Cmd+right click (cmd_left_click and cmd_right_click in the combos).
         //
         // The Windows profile runs the same shape one layer down, on layer 9,
         // with LCTRL in place of LGUI and the symbols spelled the JIS way.
         layer_8 {
             bindings = <
-&trans  &kp LG(Q)      &kp LG(W)  &kp LG(E)  &kp LG(R)  &kp LG(T)  &kp LG(Y)    &kp LG(U)      &kp LG(I)     &kp LG(O)   &kp LG(P)      &kp LG(BSPC)
+&trans  &trans         &kp LG(W)  &kp LG(E)  &kp LG(R)  &kp LG(T)  &kp LG(Y)    &kp LG(U)      &kp LG(I)     &kp LG(O)   &kp LG(P)      &kp LG(BSPC)
 &trans  &kp LG(A)      &kp LG(S)  &kp LG(D)  &kp LG(F)  &kp LG(G)  &kp LG(H)    &kp LG(J)      &kp LG(K)       &kp LG(L)        &kp LG(MINUS)  &kp LG(SEMI)
 &trans  &kp LG(Z)      &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LG(B)  &kp LG(TAB)  &trans         &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &kp RIGHT_BRACE  &kp LG(DOT)  &kp LG(SLASH)  &kp LG(ENTER)
 &trans  &kp LG(GRAVE)  &trans     &trans     &trans     &trans     &trans       &kp LG(SPACE)  &trans     &kp LG(SQT)    &kp LG(EQUAL)  &trans
@@ -523,6 +591,9 @@
         // and Cmd+' and Cmd+= have no Windows reading - and on JIS the bare
         // GRAVE code is 半角/全角 rather than a backtick, so that key falls
         // through rather than sending a modified one.
+        //
+        // J+K and K+L click here as Ctrl+left click and Ctrl+right click
+        // (ctrl_left_click and ctrl_right_click in the combos).
         layer_9 {
             bindings = <
 &trans  &kp LC(Q)  &kp LC(W)  &kp LC(E)  &kp LC(R)  &kp LC(T)  &kp LC(Y)    &kp LC(U)    &kp LC(I)    &kp LC(O)     &kp LC(P)      &kp LC(BSPC)
