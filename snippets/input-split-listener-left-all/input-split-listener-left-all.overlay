@@ -50,8 +50,7 @@
         device = <&left_trackball_pmw3610_split>;
         status = "okay";
         input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-            <&zip_temp_layer 1 500>;
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
 
         scroller {
             layers = <3>;
@@ -69,8 +68,7 @@
         device = <&left_trackball_paw3222_split>;
         status = "okay";
         input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-            <&zip_temp_layer 1 500>;
+            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
 
         scroller {
             layers = <3>;
@@ -87,8 +85,7 @@
         device = <&left_trackpad_split>;
         status = "okay";
         input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-            <&zip_temp_layer 1 500>;
+            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
 
         scroller {
             layers = <3>;
