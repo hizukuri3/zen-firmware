@@ -510,30 +510,32 @@
         // back and forth in the middle of "2026". & and * gave their keys to
         // the arrows and come from Shift with 7 and 8, as on any US keyboard.
         //
-        // The arrows are one hand's job: left, down and right on J, K and L,
-        // and up on the comma beneath K. They are used with modifiers far more
-        // than anything else here - Shift to select, Cmd or Opt to jump - so the
-        // hold and the arrows share the right hand and leave the left free for
-        // those. The comma's < still comes from Shift and the comma.
+        // The arrows are one hand's job: left, down and right on J, K and L.
+        // They are used with modifiers far more than anything else here - Shift
+        // to select, Cmd or Opt to jump - so the hold and the arrows share the
+        // right hand and leave the left free for those.
         //
         // Up belongs on I, above K, but I is 8. So the arrows are &arrow, which
         // raises layer 10 on the first one pressed: from then until space is
         // let go, I is Up as well. A digit run never touches an arrow and keeps
         // its 8; an arrow run almost always starts with Down, Left or Right and
-        // gets Up on I from the second key. Up on the comma stays for the run
-        // that starts with Up.
+        // gets Up on I from the second key. Up has no key of its own, so a run
+        // that starts with Up has to start with another arrow.
         //
         // Below those the openers run { [ ( inward along C, V and B, and ) and
         // ] sit at their mirrors on N and M, so 「」 and () close under the
-        // same hold that opened them. } would mirror { on the comma, but the
-        // up arrow has that key; it comes from the Cmd hold, which carries all
-        // three closers at the same spots.
+        // same hold that opened them, and } sits on the comma, the mirror of
+        // {. The Cmd hold still carries all three closers at the same spots.
+        //
+        // The double quote is on Z, under the left hand, which is free while
+        // the right thumb holds space. It used to be at the far end of the
+        // bottom row, a stretch from the thumb; that key now types a plain '.
         layer_6 {
             bindings = <
 &trans  &kp N1     &kp N2  &kp N3    &kp N4      &kp N5                &kp N6                 &kp N7          &kp N8           &kp N9             &kp N0          &kp DELETE
 &trans  &kp EXCL   &kp AT  &kp HASH  &kp DOLLAR  &kp PRCNT             &kp CARET              &arrow LEFT_ARROW  &arrow DOWN_ARROW   &arrow RIGHT_ARROW    &kp UNDERSCORE  &kp COLON
-&trans  &trans     &trans  &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS  &trans  &trans          &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &arrow UP_ARROW    &kp GREATER_THAN  &kp QUESTION  &trans
-&trans  &kp TILDE  &trans  &trans  &trans  &trans                &trans                 &trans          &trans           &kp DOUBLE_QUOTES  &kp PLUS        &trans
+&trans  &kp DOUBLE_QUOTES  &trans  &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS  &trans  &trans          &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &kp RIGHT_BRACE    &kp GREATER_THAN  &kp QUESTION  &trans
+&trans  &kp TILDE  &trans  &trans  &trans  &trans                &trans                 &trans          &trans           &trans             &kp PLUS        &trans
             >;
         };
 
@@ -544,8 +546,8 @@
             bindings = <
 &trans  &kp N1         &jis_2   &kp N3      &kp N4      &kp N5        &jis_6      &jis_7          &jis_8          &jis_9           &jis_0         &kp DELETE
 &trans  &kp LS(N1)     &jis_at  &kp LS(N3)  &kp LS(N4)  &kp LS(N5)    &kp EQUAL   &arrow LEFT_ARROW  &arrow DOWN_ARROW  &arrow RIGHT_ARROW  &kp LS(INT1)   &jis_colon
-&trans  &trans         &trans  &kp LS(RBKT)  &kp RBKT  &kp LS(N8)  &trans      &trans          &kp LS(N9)      &kp BSLH         &arrow UP_ARROW   &kp LS(DOT)   &kp LS(SLASH)  &trans
-&trans  &kp LS(EQUAL)  &trans  &trans  &trans  &trans        &trans      &trans          &trans          &kp LS(N2)       &kp LS(SEMI)   &trans
+&trans  &kp LS(N2)     &trans  &kp LS(RBKT)  &kp RBKT  &kp LS(N8)  &trans      &trans          &kp LS(N9)      &kp BSLH         &kp LS(BSLH)      &kp LS(DOT)   &kp LS(SLASH)  &trans
+&trans  &kp LS(EQUAL)  &trans  &trans  &trans  &trans        &trans      &trans          &trans          &trans           &kp LS(SEMI)   &trans
             >;
         };
 
