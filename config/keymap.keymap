@@ -315,9 +315,16 @@
         // &macro_param_1to1 hands the macro's parameter to the one binding that
         // follows it and nothing else, so it sits directly in front of &mkp and
         // not in front of the modifier.
+        //
+        // wait-ms is 50 rather than the default 15 because the modifier and the
+        // button travel as separate reports. A held Cmd worked for a drag while
+        // this macro's did not: the button went down before the host had seen
+        // the modifier, and a drag reads its modifiers when the button goes
+        // down. A click only reads them later, which is why that already worked.
         cmd_click: cmd_click {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
+            wait-ms = <50>;
             bindings
                 = <&macro_press &kp LGUI>
                 , <&macro_param_1to1>
@@ -331,6 +338,7 @@
         ctrl_click: ctrl_click {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
+            wait-ms = <50>;
             bindings
                 = <&macro_press &kp LCTRL>
                 , <&macro_param_1to1>
