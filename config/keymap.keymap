@@ -321,6 +321,12 @@
         // this macro's did not: the button went down before the host had seen
         // the modifier, and a drag reads its modifiers when the button goes
         // down. A click only reads them later, which is why that already worked.
+        //
+        // The release waits longer, 150ms, between the button and the modifier.
+        // A drop reads its modifiers when the button comes up, and measured on a
+        // Mac the modifier release arrived 2ms ahead of the button even with 50ms
+        // between them: the button report sits behind the ball's movement
+        // reports. The modifier has to outlive the button, so the gap is wide.
         cmd_click: cmd_click {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -330,6 +336,7 @@
                 , <&macro_param_1to1>
                 , <&mkp MACRO_PLACEHOLDER>
                 , <&macro_pause_for_release>
+                , <&macro_wait_time 150>
                 , <&macro_param_1to1>
                 , <&macro_release &mkp MACRO_PLACEHOLDER &kp LGUI>
                 ;
@@ -344,6 +351,7 @@
                 , <&macro_param_1to1>
                 , <&mkp MACRO_PLACEHOLDER>
                 , <&macro_pause_for_release>
+                , <&macro_wait_time 150>
                 , <&macro_param_1to1>
                 , <&macro_release &mkp MACRO_PLACEHOLDER &kp LCTRL>
                 ;
